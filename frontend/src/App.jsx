@@ -8,8 +8,6 @@ import LemmatizationStage from './components/LemmatizationStage'
 import PosTaggingStage from './components/PosTaggingStage'
 import ParsingStage from './components/ParsingStage'
 
-const API = 'http://localhost:5000'
-
 export default function App() {
   const [text, setText] = useState('The quick brown fox jumps over the lazy dog')
   const [result, setResult] = useState(null)
@@ -22,7 +20,7 @@ export default function App() {
     setError(null)
     setResult(null)
     try {
-      const res = await fetch(`${API}/process`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/process`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: text.trim() }),
@@ -34,7 +32,7 @@ export default function App() {
         setError(data.message || 'Unknown error from server.')
       }
     } catch {
-      setError('Cannot reach Flask backend. Make sure it is running on http://localhost:5000')
+      setError(`Cannot reach Flask backend. Make sure it is running on ${import.meta.env.VITE_API_URL}`)
     } finally {
       setLoading(false)
     }
