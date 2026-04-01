@@ -1,0 +1,14 @@
+/* Global reset & base styles */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #060810;
+  color: #e1e7f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0d1019; }
+::-webkit-scrollbar-thumb { background: #1e2840; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
